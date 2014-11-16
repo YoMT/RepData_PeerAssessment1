@@ -7,7 +7,12 @@ output:
 
 
 ## Loading and preprocessing the data
-
+h <- read.csv("activity.csv",head=TRUE,stringsAsFactors=FALSE)
+h$date<-as.Date(p$date, "%d/%m/%Y")
+h <-na.omit(h)
+g <- h[,c(1,2)]
+library(dplyr)
+p<- ddply(g,.(date),summarise,Total = sum(steps))
 
 
 ## What is mean total number of steps taken per day?
